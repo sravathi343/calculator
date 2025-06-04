@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator by sravanthi</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>mukkamala sravanthi</h1>
+    <p>Simple Stylish Calculator</p>
+  </header>
+
+  <main>
+    <div class="calculator">
+      <input type="text" class="display" id="display" disabled placeholder="0">
+
+      <div class="buttons">
+        <button class="clear">C</button>
+        <button class="operator">/</button>
+        <button class="operator">*</button>
+        <button class="operator">-</button>
+
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="operator">+</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button class="equals">=</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>0</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 sravanthi. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll(".buttons button");
+
+    let currentInput = "";
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const value = button.textContent;
+
+        if (value === "C") {
+          currentInput = "";
+          display.value = "";
+        } else if (value === "=") {
+          try {
+            currentInput = eval(currentInput).toString();
+            display.value = currentInput;
+          } catch {
+            display.value = "Error";
+            currentInput = "";
+          }
+        } else {
+          currentInput += value;
+          display.value = currentInput;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
